@@ -28,11 +28,19 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 const userController = require('./controllers/user');
-
+const mailController = require('./controllers/mails');
+ 
 app.get('/api/v1/users', userController.getAllUsers);
 app.get('/api/v1/users/:id', userController.getUserById);
 
 app.post('/api/v1/users', userController.postNewUser);
 app.put('/api/v1/users/:id', userController.updateUserById);
 app.delete('/api/v1/users/:id', userController.delUserById);
+
+app.post('/api/v1/mails', mailController.postNewMail);
+app.get('/api/v1/mails', mailController.getAllMail);
+app.get('/api/v1/mails/:id', mailController.getMailById);
+app.put('/api/v1/mails/:id', mailController.updateMailById);
+app.delete('/api/v1/mails/:id', mailController.deleteMailById);
+
 module.exports = app;
