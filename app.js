@@ -27,4 +27,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+const userController = require('./controllers/user');
+
+app.get('/api/v1/users', userController.getAllUsers);
+app.get('/api/v1/users/:id', userController.getUserById);
+
+app.post('/api/v1/users', userController.postNewUser);
+app.put('/api/v1/users/:id', userController.updateUserById);
+app.delete('/api/v1/users/:id', userController.delUserById);
 module.exports = app;
